@@ -1,0 +1,2208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>SHANDONGAIR-ET</title>
+<link type="text/css" rel="stylesheet" href="/scet/jquery-ui-1.9.0/css/custom-theme/jquery-ui-1.9.0.custom.css?v=3" />
+<link type="text/css" rel="stylesheet" href="/scet/resources/css/air/airAvail.css?v=3" />
+
+<script type="text/javascript" src="/scet/js/99_click/99_click_oztime.js"></script>
+<script type="text/javascript">
+
+var userid = null;
+
+</script>
+<script type="text/javascript" src="/scet/js/99_click/99_click_userId.js"></script>
+
+<script type="text/javascript" src="/scet/airRouteInfo.do"></script>
+<script type="text/javascript" src="/scet/jquery-ui-1.9.0/js/jquery-1.8.2.js?v=3"></script>
+<script type="text/javascript" src="/scet/jquery-ui-1.9.0/js/jquery-ui-1.9.0.custom.js?v=3"></script>
+<script type="text/javascript" src="/scet/jquery-ui-1.9.0/js/external/jquery.bgiframe-2.1.2.js?v=3"></script>
+
+<script type="text/javascript" src="/scet/resources/js/Util.js?v=3"></script>
+<script type="text/javascript" src="/scet/resources/js/CityAutocomplete.js?v=3"></script>
+<script type="text/javascript" src="/scet/resources/js/CityPicker.js?v=3"></script>
+<script type="text/javascript" src="/scet/resources/js/ui.js?v=3"></script>
+<script type="text/javascript" src="/scet/resources/js/air/airAvail.js?v=3"></script>
+<script type="text/javascript" src="/scet/FusionCharts/JSClass/FusionCharts.js?v=3"></script>
+
+<script type="text/javascript">
+var currentDateStr = "2014-11-15";
+var actionDomestic = "/scet/queryAv.do";
+var actionInternational = "/scet/queryAvInternational.do";
+var lan = "en";
+var hotCityIndex = 'hot';
+var hotCity = 'hotcity';
+var hotCityIp = 'city code';
+var tipCity = 'Pinyin'; //中文/拼音
+var orgCityError = 'Select departure city';
+var dstCityError = 'Select arrival city';
+var depDateError = 'Select Departure Date';
+var retDateError = 'Select Return Date';
+var dateOrderError = 'Date of departure should not later than the date of return!';
+var hotelDateError = "您选择的是机+酒套餐，当日航班无法预订，请重新选择出发日期";
+</script>
+<script type="text/javascript" src="/scet/resources/js/searchingBox.js?v=3"></script>
+<script type="text/javascript">
+var ctx = "/scet";
+var travelType = "0";
+var connectionType = "OW";
+var showAllPrice = "显示所有价格";
+var showLowPrice = "只显示最低价";
+var searchingStr="正在查询，请稍后……";
+var specialInforUrl = "/scet/specialPrice.do";
+var calenderUrl = "/scet/calenderPrice.do";
+var isHotelFlagChoose = "" ;
+</script>
+<script type="text/javascript">
+var travelType = "0";
+var cityNameOrg = "北京";
+var cityNameDes = "烟台";
+var takeoffDate = "2014-12-31";
+</script>
+<script type="text/javascript" src="/scet/js/99_click/99_click_airavail.js"></script>
+</head>
+
+<body>
+<div id="main">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/scet/resources/css/main.css?v=3" />
+
+<div id="head">
+	<div class="logo">
+		<div class="language">
+		
+			<a href="/scet/index.jsp?lan=cn" >中文</a>
+		
+		&nbsp;|&nbsp;
+		<a href="http://www.shandongair.com.cn/kr">&#54620;&#44397;&#50612;</a>
+		</div><br/><br/><br/>
+		<div>
+		<table align="right">
+			<tr><td class="tel1">
+				Shandong: <span class="spn-tel">96777</span>
+				National:<span class="spn-tel">400-60-96777</span>
+			</td><td>&nbsp;</td><td class="tel2">
+				<a href="javascript:void(0)" onclick="gowebcall()">Online Services</a>
+			</td></tr>
+		</table>
+		</div>
+	</div>
+</div>
+<div id="nav">
+<div class="left"></div>
+<div class="center">
+
+<ul>
+
+
+<li><a class="bold" href="http://www.shandongair.com.cn/en/index.html">Home</a></li>
+<li onmouseover="this.className='hover'" onmouseout="this.className=''"><a href="http://www.shandongair.com.cn/web/shair_en/promotions">Enjoy Flying</a></li>
+<li onmouseover="this.className='hover'" onmouseout="this.className=''"><a href="http://www.shandongair.com.cn/web/shair_en/timetable">Flight Info.</a></li>
+<li onmouseover="this.className='hover'" onmouseout="this.className=''"><a href="http://ffp.airchina.com.cn/en/index.jsp" target="_blank">PhoenixMiles</a></li>
+<li onmouseover="this.className='hover'" onmouseout="this.className=''"><a href="http://www.shandongair.com.cn/web/shair_en/cargo">Cargo</a></li>
+<li onmouseover="this.className='hover'" onmouseout="this.className=''"><a href="http://www.shandongair.com.cn/web/shair_en/aboutsda">About</a></li>
+
+
+
+</ul>
+
+</div>
+<div class="right"></div>
+</div>
+
+<div id="shortcut">
+
+
+
+<a href="/scet/b2clogin.do">Log in</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="http://218.56.48.139:8083/front/register/registeren.html">Register</a>
+&nbsp;|&nbsp;
+<a href="/scet/b2cNew/orderquery/orderquery_unregistered.jsp">non-reg orders</a>
+
+
+
+&nbsp;|&nbsp;
+<a href="http://www.shandongair.com.cn/web/shair_en/help">FAQ</a>
+</div>
+
+<script type="text/javascript">function gowebcall(){window.open("http://chat.looyu.com/chat/chat/p.do?c=27621&g=22345&f=55364", "_blank", "height=463, width=690,toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no");return false;}</script>
+<div class="relative"><div class="icon-title">&nbsp;&nbsp;&nbsp;&nbsp;航班选择</div><br/><br/></div>
+	<div id="leftbox">
+		<div id="query">
+			<div class="border">
+				<ul class="tab2">&nbsp;&nbsp;
+					<li class="active">
+						<a href="javascript:void(0)" id="domestic" class="current">国内</a>
+					</li><li>
+						<a href="javascript:void(0)" id="international">国际、地区、两岸</a>
+					</li>
+				</ul>
+				<div id="domestic_panel" class="content" style="padding:5px 5px 5px 12px;">
+					<div style="">
+		    		<form id="frm_searching_d" name="frmSearching-d" method="post" action="/scet/queryAv.do">
+			    	<input type="hidden" name="countrytype"  value="0"/>
+			    	<table>
+				    	<tr>
+				    		<td><input style="margin-top:-5px;" type="radio" id="ow_d" name="travelType" value="0" checked="checked" />单程</td>
+							<td><input style="margin-top:-5px;" type="radio" id="rt_d" name="travelType" value="1" />往返</td>
+				    	</tr>
+				    	<tr>
+							<td colspan="2">
+								
+								<span id="hotel" class="inline-block"><input type="checkbox" id="hotel_flag" name="hotelFlag"  class="middle"/>同时查看“机+酒”套餐</span>
+								
+							</td>
+						</tr>
+						<tr height="15px"><td colspan="2"></td></tr>
+				    	<tr>
+				    		<td>出发城市</td>
+				    		<td>
+								<input id="city_name_org_d" name="cityNameOrg" class="text" style="color:gray;width: 120px;" value='北京' />
+								<input id="city_code_org_d" type="hidden" name="cityCodeOrg" value='PEK'/><br/>
+								<div id="city_picker_org_d" class="city-picker-org"></div>
+							</td>
+				    	</tr>
+				    	<tr>
+			    			<td>到达城市</td>
+							<td>
+								<input id="city_name_dst_d" name="cityNameDes" class="text" value='烟台' style="color:gray;width: 120px;" />
+								<input id="city_code_dst_d" type="hidden" name="cityCodeDes" value='YNT'/><br/>
+								<div id="city_picker_dst_d" class="city-picker-dst"></div>
+							</td>
+				    	</tr>
+				    	<tr>
+				    		<td>出发日期</td>
+							<td><input id="dep_date_d" style="width: 120px;" name="takeoffDate" class="text" value='Wed Dec 31 00:00:00 CST 2014' /></td>
+						</tr>
+						<tr class="rt_date_d" style="display:none">
+							<td>返回日期</td>
+							<td><input id="ret_date_d" style="width: 120px;" name="returnDate" class="text" value='Sat Nov 15 00:00:00 CST 2014'/></td>
+						</tr>
+						<tr height="15px"><td colspan="2"></td></tr>
+				    	<tr>
+			    			<td colspan="2">
+								成人<select name="adultNum" class="text" style="width: 40px">
+								
+								  
+								  	<option value="1" selected>1</option>
+								  
+								  
+								
+								  
+								  
+								  	<option value="2" >2</option>
+								  
+								
+								  
+								  
+								  	<option value="3" >3</option>
+								  
+								
+								  
+								  
+								  	<option value="4" >4</option>
+								  
+								
+								  
+								  
+								  	<option value="5" >5</option>
+								  
+								
+								  
+								  
+								  	<option value="6" >6</option>
+								  
+								
+								  
+								  
+								  	<option value="7" >7</option>
+								  
+								
+								  
+								  
+								  	<option value="8" >8</option>
+								  
+								
+								  
+								  
+								  	<option value="9" >9</option>
+								  
+									
+								</select>
+								<span style="margin:0 10px;"></span>
+								<span id="childNum_span">儿童</span><select id="childNum_select" name="childNum" class="text" style="width: 40px">
+								0
+								  
+								  	<option value="0" selected>0</option>
+								  
+								  
+								0
+								  
+								  
+								  	<option value="1" >1</option>
+								  
+								0
+								  
+								  
+								  	<option value="2" >2</option>
+								  
+								0
+								  
+								  
+								  	<option value="3" >3</option>
+								  
+								0
+								  
+								  
+								  	<option value="4" >4</option>
+								  
+								0
+								  
+								  
+								  	<option value="5" >5</option>
+								  
+								0
+								  
+								  
+								  	<option value="6" >6</option>
+								  
+								0
+								  
+								  
+								  	<option value="7" >7</option>
+								  
+								0
+								  
+								  
+								  	<option value="8" >8</option>
+								  
+								0
+								  
+								  
+								  	<option value="9" >9</option>
+								  
+								
+								</select>&nbsp;
+							</td>
+				    	</tr>
+				    	<tr height="15px"><td colspan="2"></td></tr>
+						<tr>
+							<td colspan="2" style="text-align: center;">
+							<input type="submit" value="查询预定" class="btn-big"/>
+							</td>
+						</tr>
+			    	</table>
+					</form>
+					</div>
+				</div>
+		
+				<div id="international_panel" class="content" style="padding:5px 5px 5px 12px;display:none;">
+					<div>
+						<form id="frm_searching_i" name="frmSearching-i" method="post" action="/scet/queryAvInternational.do">
+						<input type="hidden" id="country_type_i" name="countrytype"  value="1"/>
+						<table>
+					    	<tr>
+					    		<td><input style="margin-top:-5px;" type="radio" id="ow_i" name="travelType" value="0" checked="checked" />单程</td>
+					    		<td><input style="margin-top:-5px;" type="radio" id="rt_i" name="travelType" value="1" />往返</td>
+					    	</tr>
+					    	<tr height="15px"><td colspan="2"></td></tr>
+					    	<tr>
+					    		<td>出发城市</td>
+					    		<td>
+						    		<input id="city_name_org_i" name="cityNameOrg" class="text" style="color:gray;width: 120px;" />
+									<input id="city_code_org_i" type="hidden" name="cityCodeOrg" /><br/>
+									<div id="city_picker_org_i" class="city-picker-org"></div>
+								</td>
+					    	</tr>
+					    	<tr>
+				    			<td>到达城市</td>
+								<td>
+									<input id="city_name_dst_i" name="cityNameDes" class="text" style="color:gray;width: 120px;" />
+									<input id="city_code_dst_i" type="hidden" name="cityCodeDes" /><br/>
+									<div id="city_picker_dst_i" class="city-picker-dst"></div>
+								</td>
+					    	</tr>
+					    	<tr>
+					    		<td>出发日期</td>
+								<td><input id="dep_date_i" name="takeoffDate" class="text" style="width: 120px;" value='Wed Dec 31 00:00:00 CST 2014'/></td>
+							</tr>
+							<tr class="rt_date_i" style="display:none">
+								<td>返回日期</td>
+								<td><input id="ret_date_i" name="returnDate" class="text" style="width: 120px;" value='Sat Nov 15 00:00:00 CST 2014'/></td>
+							</tr>
+							<tr height="15px"><td colspan="2"></td></tr>
+							<tr>
+								<td colspan="2"  style="text-align: center;">
+								<input type="submit" value="查询预定" class="btn-big" />
+								</td>
+							</tr>
+			    		</table>
+			    		
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div style="width: 212px;">
+			<iframe src="/scet/pages/helpCenter.jsp" frameborder="0" width="212" height="246" scrolling="no"></iframe>
+			<div class="align-center" style="padding:6px 0px 13px 0px;">
+
+
+<a href="javascript:void(0)" onclick="return gowebcall()" style="background:url(/scet/resources/images/service-210x76.gif) no-repeat;display:block;width:210px;height:76px;position:relative">
+   	<span style="left:0px;bottom:5px;padding-left:11px;position:absolute;"><span style="font-family:黑体;color:#555">工作时间</span>&nbsp;<span style="color:#F66705;font-weight:bold">08:00-20:00</span></span>
+</a></div>
+		</div>
+		
+	</div>
+	<div id="rightbox">
+		
+
+<div class="overflow-hidden" style="margin:0 0 5px 0">
+
+
+
+<div id="leftarea" class="float-left" style="width: 723px;">
+<script type="text/javascript">var zoneidZh = "5024", zoneidEn = "5036", widthZh = "723", widthEn = "723";</script>
+
+
+
+
+
+<script type="text/javascript">
+    var widthZhAd = "undefined" == typeof widthZh || !widthZh ?"953":widthZh;
+    var heightZhAd = "undefined" == typeof heightZh || !heightZh ?"90":heightZh;
+    var zoneidZhAd = "undefined" == typeof zoneidZh || !zoneidZh ?"5027":zoneidZh;
+    
+    var widthEnAd = "undefined" == typeof widthEn || !widthEn ? "953":widthEn;
+    var heightEnAd = "undefined" == typeof heightEn || !heightEn ? "90":heightEn;
+    var zoneidEnAd = "undefined" == typeof zoneidEn || !zoneidEn ? "5027":zoneidEn;
+
+    var width = widthZhAd;
+    var height = heightZhAd;
+    var zoneid = zoneidZhAd;
+    
+    if("en" != 'cn'){
+	    width = widthEnAd;
+		height = heightEnAd;
+		zoneid = zoneidEnAd;
+    }
+</script>
+
+
+<div style="text-align:center">
+<script type="text/javascript">
+	var wz_width = width;
+	var wz_height = height;
+	var wz_zoneid = zoneid;
+</script>
+<script type="text/javascript" src="http://sc.superairmedia.com/wzcast001.js"></script>	
+<script type='text/javascript'>
+	if ("undefined" == typeof adObject) {	
+		document.write("<img src='/scet/resources/images/ad_" + width + "x" + height + ".jpg' border='0'/>");
+	}
+</script>
+</div>
+
+
+<div class="border-pink overflow-hidden" style="margin:5px 0px">
+	<div class="content-pink" >
+		<div class="float-left">
+			<img src="/scet/resources/images/icon-special.gif" />
+		</div>
+		<div class="float-left" style="margin-left:5px;">
+			<div class="top rtfont" style="margin:5px">
+				<b class="color1"><big>北京到烟台往返特价信息</big></b>
+			</div>
+			<div id="specialInfor">
+			</div>
+			
+		</div>
+	</div>
+</div>
+	
+</div>
+
+</div>
+
+		
+			
+
+
+
+
+
+
+
+
+
+<div>
+
+<div id="result1" class="result float-left" style="width:723px">
+<div class="tab" >
+<div id="calender_go">
+
+</div>
+<div class="content" style="padding:0.8em">
+<div>
+	<b style="color:#F66705;">
+				
+					请选择航班
+				
+				
+	</b> 共7个航班 <br/>
+</div>
+<div class="relative">
+	<span style="color:#0E5295;">BEIJING CAPITAL - YANTAI LAISHAN</span>
+	<span class="absolute" style="right:0;">
+	<input type="radio" name="cabinlevel1" class="cabinlevel" value="toudeng"/>头等舱&nbsp;
+	<input type="radio" name="cabinlevel1" class="cabinlevel" value="jingji" checked="checked"/>经济舱&nbsp;
+	</span>
+</div>
+</div>
+</div>
+
+<div class="panel-result" >
+<div class="border-left border-right border-bottom">
+<div class="title">
+<table>
+<tr><td class="col1" width="200px">
+	<table width="100%">
+		<tr>
+		  <td class="flight">航班</td>
+		  <td class="time">起抵时间</td>
+		  <td class="tax">机建/燃油</td>
+		</tr>
+	</table>
+</td><td>
+	<div class="cabinleveldiv">
+	<table>
+		<tr class="cabinleveltr">
+			
+		    <td class="cabin cabin_jingji" width="86">
+		    	<span class="popup-trigger">
+					<b class="cabinlabel">高级经济舱</b>
+					<div class="popup">
+						<div style="width:180px; padding:.5em;text-align:left;">
+						适用舱位：WR<br/>
+						
+						自愿签转：网站暂不支持；可线下办理； <br/>
+						
+						改期：起飞前免费；起飞后5%；<br/>
+						
+						退票：起飞前5%；起飞后10%；<br/>
+						
+						舱位组合：允许； <br/>
+						
+						保险： 可销售； <br/>
+						
+						飞享生活：可销售； <br/>
+						
+						提前座位选择：允许； <br/>
+						
+						提前餐食选择：允许； <br/>
+						
+						便捷巴士选择：部分航班免费选择; <br/>
+						
+						里程累积：110%，共享航班按实际承运公司规定执行。<br/>
+						
+						</div>
+					</div>
+				</span>
+			</td>
+			
+		    <td class="cabin cabin_jingji" width="86">
+		    	<span class="popup-trigger">
+					<b class="cabinlabel">畅行商旅</b>
+					<div class="popup">
+						<div style="width:180px; padding:.5em;text-align:left;">
+						适用舱位：Y<br/>
+						
+						自愿签转：允许；<br/>
+						
+						改期费：  起飞前免费；起飞后5%。如有票面差，须与改期费比较按高者收。<br/>
+						
+						退票费：  起飞前5%；起飞后10%<br/>
+						
+						舱位组合：允许；<br/>
+						
+						保险：    可销售；<br/>
+						
+						飞享生活：可销售；<br/>
+						
+						提前座位选择：允许；<br/>
+						
+						提前餐食选择：允许；<br/>
+						
+						便捷巴士选择：部分航班免费选择;<br/>
+						
+						里程累积：100%，共享航班按实际承运公司规定执行。<br/>
+						
+						</div>
+					</div>
+				</span>
+			</td>
+			
+		    <td class="cabin cabin_jingji" width="86">
+		    	<span class="popup-trigger">
+					<b class="cabinlabel">商旅易行</b>
+					<div class="popup">
+						<div style="width:180px; padding:.5em;text-align:left;">
+						适用舱位：BMH<br/>
+						
+						自愿签转：不允许；<br/>
+						
+						改期费：  起飞前免费；起飞后5%。如有票面差，须与改期费比较按高者收。<br/>
+						
+						退票费：  起飞前5%；起飞后10%<br/>
+						
+						舱位组合：允许；<br/>
+						
+						保险：    可销售；<br/>
+						
+						飞享生活：可销售；<br/>
+						
+						提前座位选择：允许；<br/>
+						
+						提前餐食选择：允许；<br/>
+						
+						便捷巴士选择：部分航班免费选择；<br/>
+						
+						里程累积：100%，共享航班按实际承运公司规定执行。<br/>
+						
+						</div>
+					</div>
+				</span>
+			</td>
+			
+		    <td class="cabin cabin_jingji" width="86">
+		    	<span class="popup-trigger">
+					<b class="cabinlabel">好客之旅</b>
+					<div class="popup">
+						<div style="width:180px; padding:.5em;text-align:left;">
+						适用舱位：KLPQG<br/>
+						
+						自愿签转：不允许；<br/>
+						
+						改期费：  起飞前10%；起飞后20%<br/>
+						
+						退票费：  起飞前10%；起飞后30%<br/>
+						
+						舱位组合：允许；<br/>
+						
+						保险：    可销售；<br/>
+						
+						飞享生活：可销售；<br/>
+						
+						提前座位选择：允许；<br/>
+						
+						提前餐食选择：允许；<br/>
+						
+						便捷巴士选择：部分航班提供有偿服务；<br/>
+						
+						里程累积：KLPQ100%、G50%，共享航班按实际承运公司规定执行；<br/>
+						
+						</div>
+					</div>
+				</span>
+			</td>
+			
+		    <td class="cabin cabin_jingji" width="86">
+		    	<span class="popup-trigger">
+					<b class="cabinlabel">快乐飞享</b>
+					<div class="popup">
+						<div style="width:180px; padding:.5em;text-align:left;">
+						适用舱位：VUZ<br/>
+						
+						自愿签转：不允许；<br/>
+						
+						改期费：  起飞前20%；起飞后30%<br/>
+						
+						退票费：  起飞前30%；起飞后50%<br/>
+						
+						舱位组合：允许；<br/>
+						
+						保险：    可销售；<br/>
+						
+						飞享生活：可销售；<br/>
+						
+						提前座位选择：不允许；<br/>
+						
+						提前餐食选择：允许；<br/>
+						
+						便捷巴士选择：部分航班提供有偿服务；<br/>
+						
+						里程累积：50%，共享航班按实际承运公司规定执行;<br/>
+						
+						</div>
+					</div>
+				</span>
+			</td>
+			
+		    <td class="cabin cabin_jingji" width="86">
+		    	<span class="popup-trigger">
+					<b class="cabinlabel">超值特价</b>
+					<div class="popup">
+						<div style="width:180px; padding:.5em;text-align:left;">
+						适用舱位：JTES<br/>
+						
+						自愿签转：不允许；<br/>
+						
+						改期：按多舱位管理规定执行<br/>
+						
+						退票：按多舱位管理规定执行<br/>
+						
+						舱位组合：允许；<br/>
+						
+						保险：    可销售；<br/>
+						
+						飞享生活：可销售；<br/>
+						
+						提前座位选择：不允许；<br/>
+						
+						提前餐食选择：允许；<br/>
+						
+						便捷巴士选择：部分航班提供有偿服务；<br/>
+						
+						里程累积：50%，共享航班按照实际承运公司执行；<br/>
+						
+						</div>
+					</div>
+				</span>
+			</td>
+			
+		
+		</tr>
+	</table>
+	</div>
+
+	<div class="hidden cabinleveldiv">
+	<table>
+		<tr>
+			
+		    <td class="cabin cabin_toudeng" width="86">
+		    	<span class="popup-trigger">
+					<b class="cabinlabel">头等尊享</b>
+					<div class="popup">
+						<div style="width:180px; padding:.5em;text-align:left;">
+						适用舱位：F<br/>
+						
+						自愿签转：允许；<br/>
+						
+						改期费：  起飞前免费；起飞后5%。如有票面差，须与改期费比较按高者收。<br/>
+						
+						退票费：  起飞前5%；起飞后10%<br/>
+						
+						舱位组合：允许；<br/>
+						
+						保险：    可销售；<br/>
+						
+						飞享生活：可销售；<br/>
+						
+						提前座位选择：允许；<br/>
+						
+						提前餐食选择：允许；<br/>
+						
+						便捷巴士选择：部分航班免费选择。<br/>
+						
+						</div>
+					</div>
+				</span>
+			</td>
+			
+		    <td class="cabin cabin_toudeng" width="86">
+		    	<span class="popup-trigger">
+					<b class="cabinlabel">超值头等舱</b>
+					<div class="popup">
+						<div style="width:180px; padding:.5em;text-align:left;">
+						适用舱位：A<br/>
+						
+						自愿签转：允许；<br/>
+						
+						改期：起飞前免费；起飞后5%；<br/>
+						
+						退票：起飞前5%；起飞后10%；<br/>
+						
+						舱位组合：允许；<br/>
+						
+						保险：    可销售；<br/>
+						
+						飞享生活：可销售；<br/>
+						
+						提前座位选择：允许；<br/>
+						
+						提前餐食选择：允许；<br/>
+						
+						便捷巴士选择：部分航班免费选择。<br/>
+						
+						</div>
+					</div>
+				</span>
+			</td>
+			
+		
+		</tr>
+	</table>
+	</div>
+	
+</td></tr>
+</table>
+</div>
+</div>
+<div class="rdo-group">
+	
+	<div class="record">
+	<table width="100%">
+		<tr><td class="col1" width="200px">
+			<table width="100%">
+				<tr>
+					<td class="flight">
+					    <span class="relative">
+						<img  src="/scet/resources/images/logo-small.gif" alt="" />
+						
+							<img src="/scet/resources/images/icon_codeshare.gif"  border="0" class="absolute" style="right:0;"
+							
+							title="共享航班SC1585 由中国国际航空公司实际承运"/>
+															
+									
+						
+						
+						</span><br/>
+						<span class="popup-trigger">
+							<b><a href="javascript:void(0)" class="dashed" style="line-height:24px;">SC1585</a></b>
+							<div style="width:120px;padding:1em 2em" class="popup">
+							<table>
+								
+									<tr><td><b> 无经停</b></td></tr>
+									<tr><td><b>机型：73H</b></td></tr>
+									
+							</table>
+							</div>
+						</span>
+						<br/>
+						
+					</td>
+					<td class="time">
+						Wed Dec 31 06:50:00 CST 2014<br/>
+						Wed Dec 31 08:10:00 CST 2014
+					</td>
+					<td class="tax">50/40</td>
+				</tr>
+			</table>
+		</td><td class="col2" style="text-align:left">
+			<table class="cabintable" >
+				<tr>
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    		<td width="86" valign="top">
+								<div class="rdo-trigger align-center" 
+								     data-departuredatetime="Wed Dec 31 06:50:00 CST 2014";
+								     data-arrivaldatetime="Wed Dec 31 08:10:00 CST 2014";
+								     data-arrivaldatetimethirty="Wed Dec 31 08:40:00 CST 2014";
+								     data-price="680.0";
+								     data-flightnumber="1585";
+								     data-airline="SC";
+								     data-classcode="Y";
+								     data-tax="90";
+								     data-total="770.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal="";  
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e000178704085400000000000408590000000000000000000ffffffff00000000000000004014000000000000014085400000000000408590000000000040140000000000004024000000000000000000014085400000000000000000020000000000000149b3ce05ad7400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9dad7bc0787400013171007e00087400007400015974000159740003594e5471007e000974000fe99990e7bd91e4b88ae98080e7a5a8740003593939740004313538357400096f775f64657061727471007e0008707400015374000350454b74000337334874000ce79585e8a18ce59586e6978571007e00147400014174000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014a9d643dc07870";
+								     data-signa="506872755334507854712f73617453784549353468695679754b544a4e545466656747496344774a307470684d556c474b35473738374536577a59734f68564d747a7149426e5930303437414e2b6b61364d414932646a7665484d31776a354a46325379524e744d496432517859696c49697966337266736a695a542f4c57642f5038796b4448704a744350352b336c64765342567a665937656332436d4b545868556a546d45476862593d";
+								>
+									<input name="radio"  type="radio" /><b style="font-size:1.5em">680.0</b><br/>
+									&nbsp;<span>Y舱</span>&nbsp;<span>充足</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+					
+				    	
+				    	
+				    	
+				    		<td width="86" style="display: none;" valign="top">
+								<div class="rdo-trigger" 
+									 data-departuredatetime="Wed Dec 31 06:50:00 CST 2014";
+									 data-arrivaldatetime="Wed Dec 31 08:10:00 CST 2014";
+									 data-arrivaldatetimethirty="Wed Dec 31 08:40:00 CST 2014";
+								     data-price="2370.0";
+								     data-flightnumber="1585";
+								     data-airline="SC";
+								     data-classcode="F";
+								     data-tax="90";
+								     data-total="2460.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal=""; 
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e0001787040a284000000000040a2e8000000000000000000ffffffff000000000000000040140000000000000140a284000000000040a2e80000000000401400000000000040240000000000000000000140a2840000000000000000020000000000000149b3ce05a47400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9dad7bc0787400013171007e00087400007400014674000146740003594e5471007e000974000fe99990e7bd91e4b88ae98080e7a5a874000459333433740004313538357400096f775f64657061727471007e0008707400015374000350454b74000337334874000ce5a4b4e7ad89e5b08ae4baab71007e00147400014174000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014a9d643dc07870";
+								     data-signa="4d4e6c326234493256334a34526969536877523850784442755331573446454230446b48377775546330723776344275572b524779395044616e317a3531417136507353646965384f4d555644723574377467673342336f446c367858666d3731427259306a4c4e31675363663547644d6a48754f75466c4c453567784637763145474635752f4730752f647930456249442b792f4c777a314d714f2f79487068504b59494e66695765513d";
+								     >
+								     
+								     <input name="radio"  type="radio" /><b style="font-size:1.5em">2370.0</b><br/>
+									&nbsp;<span>F舱</span>&nbsp;<span>充足</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    	
+					
+				    	
+				    	
+				    	
+				    	<td width="86"><div ></div></td>
+				    	
+				    	
+					
+				</tr>
+				<tr>    
+				</tr>
+			</table>
+			<div class="buttonlet align-right" style="margin-top:5px;"><a class="showallcabin"  coordinate="OW;aced000573720026636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466c696768745a06d6db98e934230200125a0012627573466c69676874417661696c61626c655a000569734173725a000b69735368617265436f64655a00056c7559616e49000c73746f705175616e74697479440005746178434e44000574617859514c00076169726c696e657400124c6a6176612f6c616e672f537472696e673b4c000e6172726976616c416972706f727471007e00014c000f6172726976616c4461746554696d657400104c6a6176612f7574696c2f446174653b4c00076361727269657271007e00014c0007636c61737365737400104c6a6176612f7574696c2f4c6973743b4c0008636c617a7a4d617074000f4c6a6176612f7574696c2f4d61703b4c0010646570617274757265416972706f727471007e00014c00116465706172747572654461746554696d6571007e00024c000965717569706d656e7471007e00014c000c666c696768744e756d62657271007e00014c00046d65616c71007e000178700001010000000000404900000000000040440000000000007400025343740003594e547372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9dad7bc0787400024341737200136a6176612e7574696c2e41727261794c6973747881d21d99c7619d03000149000473697a6578700000000277040000000a73720025636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e436c617a7a0900af15f5b0eba5020009430009636c617373436f64654c000b61677265656d656e74496471007e00014c000962617365436162696e71007e00014c0004666172657400264c636f6d2f74726176656c736b792f736365742f6169722f69616f2f6265616e2f466172653b4c000970726f64756374496471007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000472756c6574002f4c636f6d2f74726176656c736b792f736365742f6169722f6d616e616765722f6265616e2f436162696e52756c653b787000467400064e6f726d616c7400014673720024636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466172650900af15f5b0eba602000b44000b6164756c74416d6f756e7444000e62617365436162696e507269636544000b6368696c64416d6f756e7444000c696e66616e74416d6f756e74440005707269636544000d73747564656e74416d6f756e744c00076473744369747971007e00014c000d666172656261736973436f646571007e00014c000b6a6f75726e65795479706571007e00014c00076f72674369747971007e00014c0008746f7572436f646571007e0001787040a284000000000040a2e800000000000000000000000000000000000000000040a2e80000000000000000000000000071007e0007740004593334337400024f5774000350454b707400012d74000ce5a4b4e7ad89e5b08ae4baab71007e0019740001417372002d636f6d2e74726176656c736b792e736365742e6169722e6d616e616765722e6265616e2e436162696e52756c650900af15f5b0eba702000c5a001a6261636b466c696768744368616e67655065726d697474696f6e49000e63616e4368616e676554696d657349000e63616e55706461746554696d65734400096368616e676546656544000c6368616e676546656554776f5a0018676f466c696768744368616e67655065726d697474696f6e440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c654400097570646174654665654c0002656971007e00014c000672656d61726b71007e000178700100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a87371007e000d005971007e0011740001597371007e001340854000000000004085900000000000000000000000000000000000000000004085900000000000000000000000000071007e000774000359393971007e001671007e00177071007e001874000ce79585e8a18ce59586e6978571007e002371007e001a7371007e001b0100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a878737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f4000000000000c7708000000100000000271007e001271007e001a71007e002071007e001a7871007e00177371007e000877080000014a9d643dc0787400033733487400043135383574000153;1" action="/scet/airAvailDetails.do" ><span class="tri-br"></span><span class="button">显示所有价格</span></a></div>
+		</td></tr>
+	</table>
+	</div>
+	
+	<div class="record">
+	<table width="100%">
+		<tr><td class="col1" width="200px">
+			<table width="100%">
+				<tr>
+					<td class="flight">
+					    <span class="relative">
+						<img  src="/scet/resources/images/logo-small.gif" alt="" />
+						
+						
+						</span><br/>
+						<span class="popup-trigger">
+							<b><a href="javascript:void(0)" class="dashed" style="line-height:24px;">SC4858</a></b>
+							<div style="width:auto;padding:1em 2em" class="popup">
+							<table>
+								
+									<tr><td><b>breakfast, 无经停</b></td></tr>
+									<tr><td><b>机型：738</b></td></tr>
+									<tr><td ><b>波音737-800型（b737-800）</b></td></tr>
+									<tr><td ><b>144-189个座位</b></td></tr>
+									<tr><td ><img src="/scet/imagesTicket/737-800.jpg" /></td></tr>
+							</table>
+							</div>
+						</span>
+						<br/>
+						
+					</td>
+					<td class="time">
+						Wed Dec 31 08:55:00 CST 2014<br/>
+						Wed Dec 31 10:20:00 CST 2014
+					</td>
+					<td class="tax">50/40</td>
+				</tr>
+			</table>
+		</td><td class="col2" style="text-align:left">
+			<table class="cabintable" >
+				<tr>
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    		<td width="86" valign="top">
+								<div class="rdo-trigger align-center" 
+								     data-departuredatetime="Wed Dec 31 08:55:00 CST 2014";
+								     data-arrivaldatetime="Wed Dec 31 10:20:00 CST 2014";
+								     data-arrivaldatetimethirty="Wed Dec 31 10:50:00 CST 2014";
+								     data-price="640.0";
+								     data-flightnumber="4858";
+								     data-airline="SC";
+								     data-classcode="Y";
+								     data-tax="90";
+								     data-total="730.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal="breakfast,";  
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e000178704084000000000000408590000000000000000000ffffffff00000000000000004014000000000000014084000000000000408590000000000040140000000000004024000000000000000000014084000000000000000000020000000000000149b3ce05117400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9e2480807874000130740001317400007400015974000159740003594e5471007e000a74000fe99990e7bd91e4b88ae98080e7a5a871007e000b740004343835387400096f775f64657061727471007e0009707400014274000350454b74000337333874000ce79585e8a18ce59586e6978571007e00147400014174000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014a9dd6aea07870";
+								     data-signa="675937744270584843413139762f7268795035563977415a71565a43417775394a597943423278796c74317856586a75777a64365070484d6a517a3678794c4f67354431697367695a4a47353948552f655a44722b6c754d634742356566467433784f41693833423263397644673073596f3161594752553161357365747938473764676453325266555a437667464b61466b666d354574644c486a6a42422b2f76396e4a776870424a513d";
+								>
+									<input name="radio"  type="radio" /><b style="font-size:1.5em">640.0</b><br/>
+									&nbsp;<span>Y舱</span>&nbsp;<span>充足</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+					
+				    	
+				    	
+				    	
+				    		<td width="86" style="display: none;" valign="top">
+								<div class="rdo-trigger" 
+									 data-departuredatetime="Wed Dec 31 08:55:00 CST 2014";
+									 data-arrivaldatetime="Wed Dec 31 10:20:00 CST 2014";
+									 data-arrivaldatetimethirty="Wed Dec 31 10:50:00 CST 2014";
+								     data-price="2250.0";
+								     data-flightnumber="4858";
+								     data-airline="SC";
+								     data-classcode="F";
+								     data-tax="90";
+								     data-total="2340.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal="breakfast,"; 
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e0001787040a194000000000040a2e8000000000000000000ffffffff000000000000000040140000000000000140a194000000000040a2e80000000000401400000000000040240000000000000000000140a1940000000000000000020000000000000149b3ce04dd7400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9e2480807874000130740001317400007400014674000146740003594e5471007e000a74000fe99990e7bd91e4b88ae98080e7a5a871007e000b740004343835387400096f775f64657061727471007e0009707400014274000350454b74000337333874000ce5a4b4e7ad89e5b08ae4baab71007e00147400014174000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014a9dd6aea07870";
+								     data-signa="597352557539354c514445685653306d645a2b414250586e45352b79547a4845576b6e66464431443579766b766b6a505a454f546f4d336772496b484763525a2b576d762b777630784261674f2f676e2b756a4a4c736a567446626e506b53387a334750594d63662b534e782b69594f317164696f514a766a4d7074436c7939733837476a2f544d6c6879673534684f2f2f3646656e6777304a612f654b31324269716c35786266354d553d";
+								     >
+								     
+								     <input name="radio"  type="radio" /><b style="font-size:1.5em">2250.0</b><br/>
+									&nbsp;<span>F舱</span>&nbsp;<span>充足</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    	
+					
+				    	
+				    	
+				    	
+				    	<td width="86"><div ></div></td>
+				    	
+				    	
+					
+				</tr>
+				<tr>    
+				</tr>
+			</table>
+			<div class="buttonlet align-right" style="margin-top:5px;"><a class="showallcabin"  coordinate="OW;aced000573720026636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466c696768745a06d6db98e934230200125a0012627573466c69676874417661696c61626c655a000569734173725a000b69735368617265436f64655a00056c7559616e49000c73746f705175616e74697479440005746178434e44000574617859514c00076169726c696e657400124c6a6176612f6c616e672f537472696e673b4c000e6172726976616c416972706f727471007e00014c000f6172726976616c4461746554696d657400104c6a6176612f7574696c2f446174653b4c00076361727269657271007e00014c0007636c61737365737400104c6a6176612f7574696c2f4c6973743b4c0008636c617a7a4d617074000f4c6a6176612f7574696c2f4d61703b4c0010646570617274757265416972706f727471007e00014c00116465706172747572654461746554696d6571007e00024c000965717569706d656e7471007e00014c000c666c696768744e756d62657271007e00014c00046d65616c71007e000178700000000000000000404900000000000040440000000000007400025343740003594e547372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9e248080787400025343737200136a6176612e7574696c2e41727261794c6973747881d21d99c7619d03000149000473697a6578700000000277040000000a73720025636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e436c617a7a0900af15f5b0eba5020009430009636c617373436f64654c000b61677265656d656e74496471007e00014c000962617365436162696e71007e00014c0004666172657400264c636f6d2f74726176656c736b792f736365742f6169722f69616f2f6265616e2f466172653b4c000970726f64756374496471007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000472756c6574002f4c636f6d2f74726176656c736b792f736365742f6169722f6d616e616765722f6265616e2f436162696e52756c653b787000467400064e6f726d616c7400014673720024636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466172650900af15f5b0eba602000b44000b6164756c74416d6f756e7444000e62617365436162696e507269636544000b6368696c64416d6f756e7444000c696e66616e74416d6f756e74440005707269636544000d73747564656e74416d6f756e744c00076473744369747971007e00014c000d666172656261736973436f646571007e00014c000b6a6f75726e65795479706571007e00014c00076f72674369747971007e00014c0008746f7572436f646571007e0001787040a194000000000040a2e800000000000000000000000000000000000000000040a2e80000000000000000000000000071007e000771007e00127400024f5774000350454b707400012d74000ce5a4b4e7ad89e5b08ae4baab71007e0018740001417372002d636f6d2e74726176656c736b792e736365742e6169722e6d616e616765722e6265616e2e436162696e52756c650900af15f5b0eba702000c5a001a6261636b466c696768744368616e67655065726d697474696f6e49000e63616e4368616e676554696d657349000e63616e55706461746554696d65734400096368616e676546656544000c6368616e676546656554776f5a0018676f466c696768744368616e67655065726d697474696f6e440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c654400097570646174654665654c0002656971007e00014c000672656d61726b71007e000178700100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a87371007e000d005971007e0011740001597371007e001340840000000000004085900000000000000000000000000000000000000000004085900000000000000000000000000071007e000771007e001f71007e001571007e00167071007e001774000ce79585e8a18ce59586e6978571007e002171007e00197371007e001a0100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a878737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f4000000000000c7708000000100000000271007e001271007e001971007e001f71007e00197871007e00167371007e000877080000014a9dd6aea0787400033733387400043438353874000142;1" action="/scet/airAvailDetails.do" ><span class="tri-br"></span><span class="button">显示所有价格</span></a></div>
+		</td></tr>
+	</table>
+	</div>
+	
+	<div class="record">
+	<table width="100%">
+		<tr><td class="col1" width="200px">
+			<table width="100%">
+				<tr>
+					<td class="flight">
+					    <span class="relative">
+						<img  src="/scet/resources/images/logo-small.gif" alt="" />
+						
+						
+						</span><br/>
+						<span class="popup-trigger">
+							<b><a href="javascript:void(0)" class="dashed" style="line-height:24px;">SC4852</a></b>
+							<div style="width:auto;padding:1em 2em" class="popup">
+							<table>
+								
+									<tr><td><b>cookies or snacks, 无经停</b></td></tr>
+									<tr><td><b>机型：738</b></td></tr>
+									<tr><td ><b>波音737-800型（b737-800）</b></td></tr>
+									<tr><td ><b>144-189个座位</b></td></tr>
+									<tr><td ><img src="/scet/imagesTicket/737-800.jpg" /></td></tr>
+							</table>
+							</div>
+						</span>
+						<br/>
+						
+					</td>
+					<td class="time">
+						Wed Dec 31 09:55:00 CST 2014<br/>
+						Wed Dec 31 11:20:00 CST 2014
+					</td>
+					<td class="tax">50/40</td>
+				</tr>
+			</table>
+		</td><td class="col2" style="text-align:left">
+			<table class="cabintable" >
+				<tr>
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    		<td width="86" valign="top">
+								<div class="rdo-trigger align-center" 
+								     data-departuredatetime="Wed Dec 31 09:55:00 CST 2014";
+								     data-arrivaldatetime="Wed Dec 31 11:20:00 CST 2014";
+								     data-arrivaldatetimethirty="Wed Dec 31 11:50:00 CST 2014";
+								     data-price="640.0";
+								     data-flightnumber="4852";
+								     data-airline="SC";
+								     data-classcode="Y";
+								     data-tax="90";
+								     data-total="730.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal="cookies or snacks,";  
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e000178704084000000000000408590000000000000000000ffffffff00000000000000004014000000000000014084000000000000408590000000000040140000000000004024000000000000000000014084000000000000000000020000000000000149b3ce04d37400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9e5b6f007874000130740001317400007400015974000159740003594e5471007e000a74000fe99990e7bd91e4b88ae98080e7a5a871007e000b740004343835327400096f775f64657061727471007e0009707400015374000350454b74000337333874000ce79585e8a18ce59586e6978571007e00147400014174000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014a9e0d9d207870";
+								     data-signa="6657492b6f61543751342f4848414e464858633270346668434a374d744e73694a624a446e31367475665a437a765a496b39444250536557435a564f506a425752496a33774631535a3063362b5041787365652f5576316f73415a3331516f436573702b6b4955395646703278762f2f5579366d4e4f7a31662b4d6f70793569754d77724b616966595a4142746c2f3679476a7a544859544b4f66437762613766426b74476842624b43413d";
+								>
+									<input name="radio"  type="radio" /><b style="font-size:1.5em">640.0</b><br/>
+									&nbsp;<span>Y舱</span>&nbsp;<span>充足</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+					
+				    	
+				    	
+				    	
+				    		<td width="86" style="display: none;" valign="top">
+								<div class="rdo-trigger" 
+									 data-departuredatetime="Wed Dec 31 09:55:00 CST 2014";
+									 data-arrivaldatetime="Wed Dec 31 11:20:00 CST 2014";
+									 data-arrivaldatetimethirty="Wed Dec 31 11:50:00 CST 2014";
+								     data-price="2250.0";
+								     data-flightnumber="4852";
+								     data-airline="SC";
+								     data-classcode="F";
+								     data-tax="90";
+								     data-total="2340.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal="cookies or snacks,"; 
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e0001787040a194000000000040a2e8000000000000000000ffffffff000000000000000040140000000000000140a194000000000040a2e80000000000401400000000000040240000000000000000000140a1940000000000000000020000000000000149b3ce04ca7400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9e5b6f007874000130740001317400007400014674000146740003594e5471007e000a74000fe99990e7bd91e4b88ae98080e7a5a871007e000b740004343835327400096f775f64657061727471007e0009707400015374000350454b74000337333874000ce5a4b4e7ad89e5b08ae4baab71007e00147400014174000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014a9e0d9d207870";
+								     data-signa="50566875635a786e645453414f473272626e58796b655259636347467a4a50785a7a507859446a7a6b6c75636937677761385035577566684177456a5a625769336f4b513362714c2b4964716850345957613149436d4e6a3966327268546d697744323132636a55656e62594e31614359644a30546c624f694d4b6b61486f574459584b7856776168494c3955464749442b36542f4b4f61714c566f4f5763424c363155776962645735593d";
+								     >
+								     
+								     <input name="radio"  type="radio" /><b style="font-size:1.5em">2250.0</b><br/>
+									&nbsp;<span>F舱</span>&nbsp;<span>充足</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    	
+					
+				    	
+				    	
+				    	
+				    	<td width="86"><div ></div></td>
+				    	
+				    	
+					
+				</tr>
+				<tr>    
+				</tr>
+			</table>
+			<div class="buttonlet align-right" style="margin-top:5px;"><a class="showallcabin"  coordinate="OW;aced000573720026636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466c696768745a06d6db98e934230200125a0012627573466c69676874417661696c61626c655a000569734173725a000b69735368617265436f64655a00056c7559616e49000c73746f705175616e74697479440005746178434e44000574617859514c00076169726c696e657400124c6a6176612f6c616e672f537472696e673b4c000e6172726976616c416972706f727471007e00014c000f6172726976616c4461746554696d657400104c6a6176612f7574696c2f446174653b4c00076361727269657271007e00014c0007636c61737365737400104c6a6176612f7574696c2f4c6973743b4c0008636c617a7a4d617074000f4c6a6176612f7574696c2f4d61703b4c0010646570617274757265416972706f727471007e00014c00116465706172747572654461746554696d6571007e00024c000965717569706d656e7471007e00014c000c666c696768744e756d62657271007e00014c00046d65616c71007e000178700000000000000000404900000000000040440000000000007400025343740003594e547372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9e5b6f00787400025343737200136a6176612e7574696c2e41727261794c6973747881d21d99c7619d03000149000473697a6578700000000277040000000a73720025636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e436c617a7a0900af15f5b0eba5020009430009636c617373436f64654c000b61677265656d656e74496471007e00014c000962617365436162696e71007e00014c0004666172657400264c636f6d2f74726176656c736b792f736365742f6169722f69616f2f6265616e2f466172653b4c000970726f64756374496471007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000472756c6574002f4c636f6d2f74726176656c736b792f736365742f6169722f6d616e616765722f6265616e2f436162696e52756c653b787000467400064e6f726d616c7400014673720024636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466172650900af15f5b0eba602000b44000b6164756c74416d6f756e7444000e62617365436162696e507269636544000b6368696c64416d6f756e7444000c696e66616e74416d6f756e74440005707269636544000d73747564656e74416d6f756e744c00076473744369747971007e00014c000d666172656261736973436f646571007e00014c000b6a6f75726e65795479706571007e00014c00076f72674369747971007e00014c0008746f7572436f646571007e0001787040a194000000000040a2e800000000000000000000000000000000000000000040a2e80000000000000000000000000071007e000771007e00127400024f5774000350454b707400012d74000ce5a4b4e7ad89e5b08ae4baab71007e0018740001417372002d636f6d2e74726176656c736b792e736365742e6169722e6d616e616765722e6265616e2e436162696e52756c650900af15f5b0eba702000c5a001a6261636b466c696768744368616e67655065726d697474696f6e49000e63616e4368616e676554696d657349000e63616e55706461746554696d65734400096368616e676546656544000c6368616e676546656554776f5a0018676f466c696768744368616e67655065726d697474696f6e440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c654400097570646174654665654c0002656971007e00014c000672656d61726b71007e000178700100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a87371007e000d005971007e0011740001597371007e001340840000000000004085900000000000000000000000000000000000000000004085900000000000000000000000000071007e000771007e001f71007e001571007e00167071007e001774000ce79585e8a18ce59586e6978571007e002171007e00197371007e001a0100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a878737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f4000000000000c7708000000100000000271007e001271007e001971007e001f71007e00197871007e00167371007e000877080000014a9e0d9d20787400033733387400043438353274000153;1" action="/scet/airAvailDetails.do" ><span class="tri-br"></span><span class="button">显示所有价格</span></a></div>
+		</td></tr>
+	</table>
+	</div>
+	
+	<div class="record">
+	<table width="100%">
+		<tr><td class="col1" width="200px">
+			<table width="100%">
+				<tr>
+					<td class="flight">
+					    <span class="relative">
+						<img  src="/scet/resources/images/logo-small.gif" alt="" />
+						
+							<img src="/scet/resources/images/icon_codeshare.gif"  border="0" class="absolute" style="right:0;"
+							
+							title="共享航班SC1545 由中国国际航空公司实际承运"/>
+															
+									
+						
+						
+						</span><br/>
+						<span class="popup-trigger">
+							<b><a href="javascript:void(0)" class="dashed" style="line-height:24px;">SC1545</a></b>
+							<div style="width:auto;padding:1em 2em" class="popup">
+							<table>
+								
+									<tr><td><b> 无经停</b></td></tr>
+									<tr><td><b>机型：738</b></td></tr>
+									<tr><td ><b>波音737-800型（b737-800）</b></td></tr>
+									<tr><td ><b>144-189个座位</b></td></tr>
+									<tr><td ><img src="/scet/imagesTicket/737-800.jpg" /></td></tr>
+							</table>
+							</div>
+						</span>
+						<br/>
+						
+					</td>
+					<td class="time">
+						Wed Dec 31 11:15:00 CST 2014<br/>
+						Wed Dec 31 12:40:00 CST 2014
+					</td>
+					<td class="tax">50/40</td>
+				</tr>
+			</table>
+		</td><td class="col2" style="text-align:left">
+			<table class="cabintable" >
+				<tr>
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    		<td width="86" valign="top">
+								<div class="rdo-trigger align-center" 
+								     data-departuredatetime="Wed Dec 31 11:15:00 CST 2014";
+								     data-arrivaldatetime="Wed Dec 31 12:40:00 CST 2014";
+								     data-arrivaldatetimethirty="Wed Dec 31 13:10:00 CST 2014";
+								     data-price="680.0";
+								     data-flightnumber="1545";
+								     data-airline="SC";
+								     data-classcode="Y";
+								     data-tax="90";
+								     data-total="770.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal="";  
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e000178704085400000000000408590000000000000000000ffffffff00000000000000004014000000000000014085400000000000408590000000000040140000000000004024000000000000000000014085400000000000000000020000000000000149b3ce05997400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9ea4ad00787400013171007e00087400007400015974000159740003594e5471007e000974000fe99990e7bd91e4b88ae98080e7a5a8740003593939740004313534357400096f775f64657061727471007e0008707400015374000350454b74000337333874000ce79585e8a18ce59586e6978571007e00147400014174000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014a9e56db207870";
+								     data-signa="4c755767684649364a3043696861635241313242556d33546f61323457486e46594b54653930793951436c4c69675a7455453264487641734449396470673468502f54776139664658456b59556137686a4c54734566746b634365642f4c524d6f626f7a546d6230357a6254534a48765679714436374b4a55716b6a646c4d353948374f582f797143396a515552734850313876786965416a4f41325a304342364d64484f3467695969733d";
+								>
+									<input name="radio"  type="radio" /><b style="font-size:1.5em">680.0</b><br/>
+									&nbsp;<span>Y舱</span>&nbsp;<span>充足</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+					
+				    	
+				    	
+				    	
+				    		<td width="86" style="display: none;" valign="top">
+								<div class="rdo-trigger" 
+									 data-departuredatetime="Wed Dec 31 11:15:00 CST 2014";
+									 data-arrivaldatetime="Wed Dec 31 12:40:00 CST 2014";
+									 data-arrivaldatetimethirty="Wed Dec 31 13:10:00 CST 2014";
+								     data-price="2370.0";
+								     data-flightnumber="1545";
+								     data-airline="SC";
+								     data-classcode="F";
+								     data-tax="90";
+								     data-total="2460.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal=""; 
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e0001787040a284000000000040a2e8000000000000000000ffffffff000000000000000040140000000000000140a284000000000040a2e80000000000401400000000000040240000000000000000000140a2840000000000000000020000000000000149b3ce05717400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9ea4ad00787400013171007e00087400007400014674000146740003594e5471007e000974000fe99990e7bd91e4b88ae98080e7a5a874000459333433740004313534357400096f775f64657061727471007e0008707400015374000350454b74000337333874000ce5a4b4e7ad89e5b08ae4baab71007e00147400013674000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014a9e56db207870";
+								     data-signa="4937666a6244642b356636736f6e4c6f34565248737252446b37783938682b33625253634252696f6c6877744d44556a2b4451347a505344337366635634444f4359584d5170387a387a4f377042576f484575357830777850426e7042716c4e67324c7a583551517a51765a61466d54347754734a6e31384b31335651306543784570314b616c6b72576b494557754f3071466869764431545063324c78737455362b6b6b79556b4f74343d";
+								     >
+								     
+								     <input name="radio"  type="radio" /><b style="font-size:1.5em">2370.0</b><br/>
+									&nbsp;<span>F舱</span>&nbsp;<span> 6个</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    	
+					
+				    	
+				    	
+				    	
+				    	<td width="86"><div ></div></td>
+				    	
+				    	
+					
+				</tr>
+				<tr>    
+				</tr>
+			</table>
+			<div class="buttonlet align-right" style="margin-top:5px;"><a class="showallcabin"  coordinate="OW;aced000573720026636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466c696768745a06d6db98e934230200125a0012627573466c69676874417661696c61626c655a000569734173725a000b69735368617265436f64655a00056c7559616e49000c73746f705175616e74697479440005746178434e44000574617859514c00076169726c696e657400124c6a6176612f6c616e672f537472696e673b4c000e6172726976616c416972706f727471007e00014c000f6172726976616c4461746554696d657400104c6a6176612f7574696c2f446174653b4c00076361727269657271007e00014c0007636c61737365737400104c6a6176612f7574696c2f4c6973743b4c0008636c617a7a4d617074000f4c6a6176612f7574696c2f4d61703b4c0010646570617274757265416972706f727471007e00014c00116465706172747572654461746554696d6571007e00024c000965717569706d656e7471007e00014c000c666c696768744e756d62657271007e00014c00046d65616c71007e000178700001010000000000404900000000000040440000000000007400025343740003594e547372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9ea4ad00787400024341737200136a6176612e7574696c2e41727261794c6973747881d21d99c7619d03000149000473697a6578700000000277040000000a73720025636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e436c617a7a0900af15f5b0eba5020009430009636c617373436f64654c000b61677265656d656e74496471007e00014c000962617365436162696e71007e00014c0004666172657400264c636f6d2f74726176656c736b792f736365742f6169722f69616f2f6265616e2f466172653b4c000970726f64756374496471007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000472756c6574002f4c636f6d2f74726176656c736b792f736365742f6169722f6d616e616765722f6265616e2f436162696e52756c653b787000467400064e6f726d616c7400014673720024636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466172650900af15f5b0eba602000b44000b6164756c74416d6f756e7444000e62617365436162696e507269636544000b6368696c64416d6f756e7444000c696e66616e74416d6f756e74440005707269636544000d73747564656e74416d6f756e744c00076473744369747971007e00014c000d666172656261736973436f646571007e00014c000b6a6f75726e65795479706571007e00014c00076f72674369747971007e00014c0008746f7572436f646571007e0001787040a284000000000040a2e800000000000000000000000000000000000000000040a2e80000000000000000000000000071007e0007740004593334337400024f5774000350454b707400012d74000ce5a4b4e7ad89e5b08ae4baab71007e0019740001367372002d636f6d2e74726176656c736b792e736365742e6169722e6d616e616765722e6265616e2e436162696e52756c650900af15f5b0eba702000c5a001a6261636b466c696768744368616e67655065726d697474696f6e49000e63616e4368616e676554696d657349000e63616e55706461746554696d65734400096368616e676546656544000c6368616e676546656554776f5a0018676f466c696768744368616e67655065726d697474696f6e440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c654400097570646174654665654c0002656971007e00014c000672656d61726b71007e000178700100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a87371007e000d005971007e0011740001597371007e001340854000000000004085900000000000000000000000000000000000000000004085900000000000000000000000000071007e000774000359393971007e001671007e00177071007e001874000ce79585e8a18ce59586e6978571007e0023740001417371007e001b0100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a878737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f4000000000000c7708000000100000000271007e001271007e001a71007e002071007e00247871007e00177371007e000877080000014a9e56db20787400033733387400043135343574000153;1" action="/scet/airAvailDetails.do" ><span class="tri-br"></span><span class="button">显示所有价格</span></a></div>
+		</td></tr>
+	</table>
+	</div>
+	
+	<div class="record">
+	<table width="100%">
+		<tr><td class="col1" width="200px">
+			<table width="100%">
+				<tr>
+					<td class="flight">
+					    <span class="relative">
+						<img  src="/scet/resources/images/logo-small.gif" alt="" />
+						
+						
+						</span><br/>
+						<span class="popup-trigger">
+							<b><a href="javascript:void(0)" class="dashed" style="line-height:24px;">SC4854</a></b>
+							<div style="width:auto;padding:1em 2em" class="popup">
+							<table>
+								
+									<tr><td><b>cookies or snacks, 无经停</b></td></tr>
+									<tr><td><b>机型：738</b></td></tr>
+									<tr><td ><b>波音737-800型（b737-800）</b></td></tr>
+									<tr><td ><b>144-189个座位</b></td></tr>
+									<tr><td ><img src="/scet/imagesTicket/737-800.jpg" /></td></tr>
+							</table>
+							</div>
+						</span>
+						<br/>
+						
+					</td>
+					<td class="time">
+						Wed Dec 31 15:10:00 CST 2014<br/>
+						Wed Dec 31 16:35:00 CST 2014
+					</td>
+					<td class="tax">50/40</td>
+				</tr>
+			</table>
+		</td><td class="col2" style="text-align:left">
+			<table class="cabintable" >
+				<tr>
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    		<td width="86" valign="top">
+								<div class="rdo-trigger align-center" 
+								     data-departuredatetime="Wed Dec 31 15:10:00 CST 2014";
+								     data-arrivaldatetime="Wed Dec 31 16:35:00 CST 2014";
+								     data-arrivaldatetimethirty="Wed Dec 31 17:05:00 CST 2014";
+								     data-price="680.0";
+								     data-flightnumber="4854";
+								     data-airline="SC";
+								     data-classcode="Y";
+								     data-tax="90";
+								     data-total="770.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal="cookies or snacks,";  
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e000178704085400000000000408590000000000000000000ffffffff00000000000000004014000000000000014085400000000000408590000000000040140000000000004024000000000000000000014085400000000000000000020000000000000149b3ce054e7400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9f7bd3207874000130740001317400007400015974000159740003594e5471007e000a74000fe99990e7bd91e4b88ae98080e7a5a871007e000b740004343835347400096f775f64657061727471007e0009707400015374000350454b74000337333874000ce79585e8a18ce59586e6978571007e00147400014174000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014a9f2e01407870";
+								     data-signa="517470495a59557658714e2b613536453748315370546a574937486b394e4564526954363266344467542b793737354838364136386e71692b70753232696d6e36376a4a514e70444c543339356a7257613551444431414f574d2b786f357361734a532f464f6e7877737a39633563795a59374a505150307172462b666a3334584d43664277363158447a664a43346e746d444b635766324d33566e4c79336732784e424f6247315746453d";
+								>
+									<input name="radio"  type="radio" /><b style="font-size:1.5em">680.0</b><br/>
+									&nbsp;<span>Y舱</span>&nbsp;<span>充足</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+					
+				    	
+				    	
+				    	
+				    		<td width="86" style="display: none;" valign="top">
+								<div class="rdo-trigger" 
+									 data-departuredatetime="Wed Dec 31 15:10:00 CST 2014";
+									 data-arrivaldatetime="Wed Dec 31 16:35:00 CST 2014";
+									 data-arrivaldatetimethirty="Wed Dec 31 17:05:00 CST 2014";
+								     data-price="2370.0";
+								     data-flightnumber="4854";
+								     data-airline="SC";
+								     data-classcode="F";
+								     data-tax="90";
+								     data-total="2460.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal="cookies or snacks,"; 
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e0001787040a284000000000040a2e8000000000000000000ffffffff000000000000000040140000000000000140a284000000000040a2e80000000000401400000000000040240000000000000000000140a2840000000000000000020000000000000149b3ce05447400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9f7bd3207874000130740001317400007400014674000146740003594e5471007e000a74000fe99990e7bd91e4b88ae98080e7a5a871007e000b740004343835347400096f775f64657061727471007e0009707400015374000350454b74000337333874000ce5a4b4e7ad89e5b08ae4baab71007e00147400014174000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014a9f2e01407870";
+								     data-signa="4d764171374f2f4c5a2b346744307a4844386937314d66592f6843762b644a796c4b3070355348496374732f475a754b6f496e593764716d3066724e6d7832462f5042486b5a42565730575676364579785846525a2b61344951784558314a6235574332784b482f43634163444f7a57364863542b7438426a41326a56374a3862356f39654968385731327973586a794176515143466d2b4133314b4d6534763871735069326b4e726e673d";
+								     >
+								     
+								     <input name="radio"  type="radio" /><b style="font-size:1.5em">2370.0</b><br/>
+									&nbsp;<span>F舱</span>&nbsp;<span>充足</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    	
+					
+				    	
+				    	
+				    	
+				    	<td width="86"><div ></div></td>
+				    	
+				    	
+					
+				</tr>
+				<tr>    
+				</tr>
+			</table>
+			<div class="buttonlet align-right" style="margin-top:5px;"><a class="showallcabin"  coordinate="OW;aced000573720026636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466c696768745a06d6db98e934230200125a0012627573466c69676874417661696c61626c655a000569734173725a000b69735368617265436f64655a00056c7559616e49000c73746f705175616e74697479440005746178434e44000574617859514c00076169726c696e657400124c6a6176612f6c616e672f537472696e673b4c000e6172726976616c416972706f727471007e00014c000f6172726976616c4461746554696d657400104c6a6176612f7574696c2f446174653b4c00076361727269657271007e00014c0007636c61737365737400104c6a6176612f7574696c2f4c6973743b4c0008636c617a7a4d617074000f4c6a6176612f7574696c2f4d61703b4c0010646570617274757265416972706f727471007e00014c00116465706172747572654461746554696d6571007e00024c000965717569706d656e7471007e00014c000c666c696768744e756d62657271007e00014c00046d65616c71007e000178700000000000000000404900000000000040440000000000007400025343740003594e547372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014a9f7bd320787400025343737200136a6176612e7574696c2e41727261794c6973747881d21d99c7619d03000149000473697a6578700000000277040000000a73720025636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e436c617a7a0900af15f5b0eba5020009430009636c617373436f64654c000b61677265656d656e74496471007e00014c000962617365436162696e71007e00014c0004666172657400264c636f6d2f74726176656c736b792f736365742f6169722f69616f2f6265616e2f466172653b4c000970726f64756374496471007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000472756c6574002f4c636f6d2f74726176656c736b792f736365742f6169722f6d616e616765722f6265616e2f436162696e52756c653b787000467400064e6f726d616c7400014673720024636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466172650900af15f5b0eba602000b44000b6164756c74416d6f756e7444000e62617365436162696e507269636544000b6368696c64416d6f756e7444000c696e66616e74416d6f756e74440005707269636544000d73747564656e74416d6f756e744c00076473744369747971007e00014c000d666172656261736973436f646571007e00014c000b6a6f75726e65795479706571007e00014c00076f72674369747971007e00014c0008746f7572436f646571007e0001787040a284000000000040a2e800000000000000000000000000000000000000000040a2e80000000000000000000000000071007e000771007e00127400024f5774000350454b707400012d74000ce5a4b4e7ad89e5b08ae4baab71007e0018740001417372002d636f6d2e74726176656c736b792e736365742e6169722e6d616e616765722e6265616e2e436162696e52756c650900af15f5b0eba702000c5a001a6261636b466c696768744368616e67655065726d697474696f6e49000e63616e4368616e676554696d657349000e63616e55706461746554696d65734400096368616e676546656544000c6368616e676546656554776f5a0018676f466c696768744368616e67655065726d697474696f6e440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c654400097570646174654665654c0002656971007e00014c000672656d61726b71007e000178700100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a87371007e000d005971007e0011740001597371007e001340854000000000004085900000000000000000000000000000000000000000004085900000000000000000000000000071007e000771007e001f71007e001571007e00167071007e001774000ce79585e8a18ce59586e6978571007e002171007e00197371007e001a0100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a878737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f4000000000000c7708000000100000000271007e001271007e001971007e001f71007e00197871007e00167371007e000877080000014a9f2e0140787400033733387400043438353474000153;1" action="/scet/airAvailDetails.do" ><span class="tri-br"></span><span class="button">显示所有价格</span></a></div>
+		</td></tr>
+	</table>
+	</div>
+	
+	<div class="record">
+	<table width="100%">
+		<tr><td class="col1" width="200px">
+			<table width="100%">
+				<tr>
+					<td class="flight">
+					    <span class="relative">
+						<img  src="/scet/resources/images/logo-small.gif" alt="" />
+						
+							<img src="/scet/resources/images/icon_codeshare.gif"  border="0" class="absolute" style="right:0;"
+							
+							title="共享航班SC1593 由中国国际航空公司实际承运"/>
+															
+									
+						
+						
+						</span><br/>
+						<span class="popup-trigger">
+							<b><a href="javascript:void(0)" class="dashed" style="line-height:24px;">SC1593</a></b>
+							<div style="width:120px;padding:1em 2em" class="popup">
+							<table>
+								
+									<tr><td><b> 无经停</b></td></tr>
+									<tr><td><b>机型：73H</b></td></tr>
+									
+							</table>
+							</div>
+						</span>
+						<br/>
+						
+					</td>
+					<td class="time">
+						Wed Dec 31 18:40:00 CST 2014<br/>
+						Wed Dec 31 20:05:00 CST 2014
+					</td>
+					<td class="tax">50/40</td>
+				</tr>
+			</table>
+		</td><td class="col2" style="text-align:left">
+			<table class="cabintable" >
+				<tr>
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    		<td width="86" valign="top">
+								<div class="rdo-trigger align-center" 
+								     data-departuredatetime="Wed Dec 31 18:40:00 CST 2014";
+								     data-arrivaldatetime="Wed Dec 31 20:05:00 CST 2014";
+								     data-arrivaldatetimethirty="Wed Dec 31 20:35:00 CST 2014";
+								     data-price="680.0";
+								     data-flightnumber="1593";
+								     data-airline="SC";
+								     data-classcode="Y";
+								     data-tax="90";
+								     data-total="770.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal="";  
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e000178704085400000000000408590000000000000000000ffffffff00000000000000004014000000000000014085400000000000408590000000000040140000000000004024000000000000000000014085400000000000000000020000000000000149b3ce05d87400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014aa03c15e0787400013171007e00087400007400015974000159740003594e5471007e000974000fe99990e7bd91e4b88ae98080e7a5a8740003593939740004313539337400096f775f64657061727471007e0008707400015374000350454b74000337334874000ce79585e8a18ce59586e6978571007e00147400014174000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014a9fee44007870";
+								     data-signa="4b6e68356b372f4262312b6265497630384379624e4f5a534b4b52714461506867386d705a6d3962636443476a324a6b76705134704346697850496577646f57564f305378694f4e46615445666a447576742f4f456547724f6f7a68664c525449335633307576797a41426267586644326f6e6349635a75332b6f6e712f732f4c36564a48416d562f34336b316a53426e642f5a44734f6d74415431444170666531715935353151534f6b3d";
+								>
+									<input name="radio"  type="radio" /><b style="font-size:1.5em">680.0</b><br/>
+									&nbsp;<span>Y舱</span>&nbsp;<span>充足</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+					
+				    	
+				    	
+				    	
+				    		<td width="86" style="display: none;" valign="top">
+								<div class="rdo-trigger" 
+									 data-departuredatetime="Wed Dec 31 18:40:00 CST 2014";
+									 data-arrivaldatetime="Wed Dec 31 20:05:00 CST 2014";
+									 data-arrivaldatetimethirty="Wed Dec 31 20:35:00 CST 2014";
+								     data-price="2370.0";
+								     data-flightnumber="1593";
+								     data-airline="SC";
+								     data-classcode="F";
+								     data-tax="90";
+								     data-total="2460.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal=""; 
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e0001787040a284000000000040a2e8000000000000000000ffffffff000000000000000040140000000000000140a284000000000040a2e80000000000401400000000000040240000000000000000000140a2840000000000000000020000000000000149b3ce05b97400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014aa03c15e0787400013171007e00087400007400014674000146740003594e5471007e000974000fe99990e7bd91e4b88ae98080e7a5a874000459333433740004313539337400096f775f64657061727471007e0008707400015374000350454b74000337334874000ce5a4b4e7ad89e5b08ae4baab71007e00147400014174000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014a9fee44007870";
+								     data-signa="4b2b66365237796a41537479342b4f637138643774426d545450534a38396f754a736f2b33504252593033786632424b775a494c684f6876695947474e363757386541346f4b68693966314a34306f44645645306c306e564953334a48552f622f5563376f6159396c32413945686455523134554a6c7968646243766d5454783158704567333379576c307051525053714762783546336c504b6b79553363722b7a37736e58517879676b3d";
+								     >
+								     
+								     <input name="radio"  type="radio" /><b style="font-size:1.5em">2370.0</b><br/>
+									&nbsp;<span>F舱</span>&nbsp;<span>充足</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    	
+					
+				    	
+				    	
+				    	
+				    	<td width="86"><div ></div></td>
+				    	
+				    	
+					
+				</tr>
+				<tr>    
+				</tr>
+			</table>
+			<div class="buttonlet align-right" style="margin-top:5px;"><a class="showallcabin"  coordinate="OW;aced000573720026636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466c696768745a06d6db98e934230200125a0012627573466c69676874417661696c61626c655a000569734173725a000b69735368617265436f64655a00056c7559616e49000c73746f705175616e74697479440005746178434e44000574617859514c00076169726c696e657400124c6a6176612f6c616e672f537472696e673b4c000e6172726976616c416972706f727471007e00014c000f6172726976616c4461746554696d657400104c6a6176612f7574696c2f446174653b4c00076361727269657271007e00014c0007636c61737365737400104c6a6176612f7574696c2f4c6973743b4c0008636c617a7a4d617074000f4c6a6176612f7574696c2f4d61703b4c0010646570617274757265416972706f727471007e00014c00116465706172747572654461746554696d6571007e00024c000965717569706d656e7471007e00014c000c666c696768744e756d62657271007e00014c00046d65616c71007e000178700001010000000000404900000000000040440000000000007400025343740003594e547372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014aa03c15e0787400024341737200136a6176612e7574696c2e41727261794c6973747881d21d99c7619d03000149000473697a6578700000000277040000000a73720025636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e436c617a7a0900af15f5b0eba5020009430009636c617373436f64654c000b61677265656d656e74496471007e00014c000962617365436162696e71007e00014c0004666172657400264c636f6d2f74726176656c736b792f736365742f6169722f69616f2f6265616e2f466172653b4c000970726f64756374496471007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000472756c6574002f4c636f6d2f74726176656c736b792f736365742f6169722f6d616e616765722f6265616e2f436162696e52756c653b787000467400064e6f726d616c7400014673720024636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466172650900af15f5b0eba602000b44000b6164756c74416d6f756e7444000e62617365436162696e507269636544000b6368696c64416d6f756e7444000c696e66616e74416d6f756e74440005707269636544000d73747564656e74416d6f756e744c00076473744369747971007e00014c000d666172656261736973436f646571007e00014c000b6a6f75726e65795479706571007e00014c00076f72674369747971007e00014c0008746f7572436f646571007e0001787040a284000000000040a2e800000000000000000000000000000000000000000040a2e80000000000000000000000000071007e0007740004593334337400024f5774000350454b707400012d74000ce5a4b4e7ad89e5b08ae4baab71007e0019740001417372002d636f6d2e74726176656c736b792e736365742e6169722e6d616e616765722e6265616e2e436162696e52756c650900af15f5b0eba702000c5a001a6261636b466c696768744368616e67655065726d697474696f6e49000e63616e4368616e676554696d657349000e63616e55706461746554696d65734400096368616e676546656544000c6368616e676546656554776f5a0018676f466c696768744368616e67655065726d697474696f6e440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c654400097570646174654665654c0002656971007e00014c000672656d61726b71007e000178700100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a87371007e000d005971007e0011740001597371007e001340854000000000004085900000000000000000000000000000000000000000004085900000000000000000000000000071007e000774000359393971007e001671007e00177071007e001874000ce79585e8a18ce59586e6978571007e002371007e001a7371007e001b0100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a878737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f4000000000000c7708000000100000000271007e001271007e001a71007e002071007e001a7871007e00177371007e000877080000014a9fee4400787400033733487400043135393374000153;1" action="/scet/airAvailDetails.do" ><span class="tri-br"></span><span class="button">显示所有价格</span></a></div>
+		</td></tr>
+	</table>
+	</div>
+	
+	<div class="record">
+	<table width="100%">
+		<tr><td class="col1" width="200px">
+			<table width="100%">
+				<tr>
+					<td class="flight">
+					    <span class="relative">
+						<img  src="/scet/resources/images/logo-small.gif" alt="" />
+						
+						
+						</span><br/>
+						<span class="popup-trigger">
+							<b><a href="javascript:void(0)" class="dashed" style="line-height:24px;">SC4856</a></b>
+							<div style="width:auto;padding:1em 2em" class="popup">
+							<table>
+								
+									<tr><td><b>cookies or snacks, 无经停</b></td></tr>
+									<tr><td><b>机型：738</b></td></tr>
+									<tr><td ><b>波音737-800型（b737-800）</b></td></tr>
+									<tr><td ><b>144-189个座位</b></td></tr>
+									<tr><td ><img src="/scet/imagesTicket/737-800.jpg" /></td></tr>
+							</table>
+							</div>
+						</span>
+						<br/>
+						
+					</td>
+					<td class="time">
+						Wed Dec 31 22:20:00 CST 2014<br/>
+						Wed Dec 31 23:45:00 CST 2014
+					</td>
+					<td class="tax">50/40</td>
+				</tr>
+			</table>
+		</td><td class="col2" style="text-align:left">
+			<table class="cabintable" >
+				<tr>
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    		<td width="86" valign="top">
+								<div class="rdo-trigger align-center" 
+								     data-departuredatetime="Wed Dec 31 22:20:00 CST 2014";
+								     data-arrivaldatetime="Wed Dec 31 23:45:00 CST 2014";
+								     data-arrivaldatetimethirty="Thu Jan 01 00:15:00 CST 2015";
+								     data-price="630.0";
+								     data-flightnumber="4856";
+								     data-airline="SC";
+								     data-classcode="Y";
+								     data-tax="90";
+								     data-total="720.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal="cookies or snacks,";  
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e000178704083b00000000000408590000000000000000000ffffffff00000000000000004014000000000000014083b00000000000408590000000000040140000000000004024000000000000000000014083b00000000000000000020000000000000149b3ce05357400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014aa10580607874000130740001317400007400015974000159740003594e5471007e000a74000fe99990e7bd91e4b88ae98080e7a5a871007e000b740004343835367400096f775f64657061727471007e0009707400015374000350454b74000337333874000ce79585e8a18ce59586e6978571007e00147400014174000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014aa0b7ae807870";
+								     data-signa="56784c4369374c58345731344d4e674e59494936697a4565524d6b4c4733697571776538332b794a5150655a7058494a44637072646c387746452f65424f6b36656b6b2b4148635655502b6d6c654572717146486a6646594852466e4d5938373069796f4c3457416f594c7a79396e53485a5576626847525461722f66705a4d63645665566c52562b6f537a6177656f647a46414e724b344479646d535766715373472b71643847504b513d";
+								>
+									<input name="radio"  type="radio" /><b style="font-size:1.5em">630.0</b><br/>
+									&nbsp;<span>Y舱</span>&nbsp;<span>充足</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+				    	
+				    	
+				    	
+				    	<td width="86">&nbsp;</td>
+				    	
+				    			 
+					
+					
+				    	
+				    	
+				    	
+				    		<td width="86" style="display: none;" valign="top">
+								<div class="rdo-trigger" 
+									 data-departuredatetime="Wed Dec 31 22:20:00 CST 2014";
+									 data-arrivaldatetime="Wed Dec 31 23:45:00 CST 2014";
+									 data-arrivaldatetimethirty="Thu Jan 01 00:15:00 CST 2015";
+								     data-price="2230.0";
+								     data-flightnumber="4856";
+								     data-airline="SC";
+								     data-classcode="F";
+								     data-tax="90";
+								     data-total="2320.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal="cookies or snacks,"; 
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e0001787040a16c000000000040a2e8000000000000000000ffffffff000000000000000040140000000000000140a16c000000000040a2e80000000000401400000000000040240000000000000000000140a16c0000000000000000020000000000000149b3ce05227400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014aa10580607874000130740001317400007400014674000146740003594e5471007e000a74000fe99990e7bd91e4b88ae98080e7a5a871007e000b740004343835367400096f775f64657061727471007e0009707400015374000350454b74000337333874000ce5a4b4e7ad89e5b08ae4baab71007e00147400013774000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014aa0b7ae807870";
+								     data-signa="634c75664666644d31587a3739745159316c5042786e3567564c3558414a3449667a6a65534f2f4a705757657a4d355961645156323055364a7677585a746f724f6448652f572f6c50487a4461584479566543594f4641792b3436586632785663684d4249307143664e43575949546d4e52334164645a78676f34443657733230355933776b3672437867714c585674645057514e544472484f7665436a5956496b62744a6f4b516d70553d";
+								     >
+								     
+								     <input name="radio"  type="radio" /><b style="font-size:1.5em">2230.0</b><br/>
+									&nbsp;<span>F舱</span>&nbsp;<span> 7个</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    	
+					
+				    	
+				    	
+				    	
+				    		<td width="86" style="display: none;" valign="top">
+								<div class="rdo-trigger" 
+									 data-departuredatetime="Wed Dec 31 22:20:00 CST 2014";
+									 data-arrivaldatetime="Wed Dec 31 23:45:00 CST 2014";
+									 data-arrivaldatetimethirty="Thu Jan 01 00:15:00 CST 2015";
+								     data-price="660.0";
+								     data-flightnumber="4856";
+								     data-airline="SC";
+								     data-classcode="A";
+								     data-tax="90";
+								     data-total="750.0"
+								     data-orgcity="BEIJING CAPITAL";
+								     data-dstcity="YANTAI LAISHAN";
+								     data-remark="起飞前同舱同价免费改期,起飞后同舱同价每次更改改期费5%; 起飞前退票费5%,起飞后退票费10%; 如更改存在票面差,需比较票面差与改期费取高; 限网上退票";
+								     data-meal="cookies or snacks,"; 
+								     data-stopquantity="无"
+								     data-type="0";
+								     data-traveltype="0";
+								     data-hexstr="aced00057372002e636f6d2e74726176656c736b792e736365742e7765622e6169722e6265616e2e41697243686f6f73654d6f64656c5a06d6db98e9342402002b440007506d507269636544000e62617365436162696e507269636549000e63616e4368616e676554696d657349000f63616e5570677261646554696d65734400096368616e676546656544000c6368616e676546656554776f5a0007655469636b657444000b6c6f7765737450726963654400057072696365440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c6544000973616c6550726963654900077365675479706549000473746f704a000974696d655374616d704c000b61677265656d656e7449647400124c6a6176612f6c616e672f537472696e673b4c00076169726c696e6571007e00014c000b6172726976616c54696d657400104c6a6176612f7574696c2f446174653b4c000361737271007e00014c001a6261636b466c696768744368616e67655065726d697474696f6e71007e00014c000962616e6b666176496471007e00014c000962617365436162696e71007e00014c0009636c617373436f646571007e00014c000364737471007e00014c000c6561737966617265466c616771007e00014c0002656971007e00014c000d666172656261736973436f646571007e00014c0008666c696768744e6f71007e00014c000a666c696768745479706571007e00014c0018676f466c696768744368616e67655065726d697474696f6e71007e00014c000b69735368617265436f646571007e00014c00046d65616c71007e00014c00036f726771007e00014c000a706c616e655374796c6571007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000b7265616c4169726c696e6571007e00014c000672656d61726b71007e00014c00097369676e617475726571007e00014c000b74616b654f666654696d6571007e00024c0008746f7572436f646571007e000178704084a0000000000040a2e8000000000000000000ffffffff00000000000000004014000000000000014084a00000000000408590000000000040140000000000004024000000000000000000014084a00000000000000000020000000000000149b3ce052c7400064e6f726d616c74000253437372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014aa10580607874000130740001317400007400014674000141740003594e5471007e000a74000fe99990e7bd91e4b88ae98080e7a5a874000b412f50454b313441303433740004343835367400096f775f64657061727471007e0009707400015374000350454b74000337333874000fe8b685e580bce5a4b4e7ad89e888b171007e001571007e000974000253437400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a8707371007e000677080000014aa0b7ae807870";
+								     data-signa="423931535455336d4266734d5771476c373570306d6d566c346177636e447437346449714c7747777371506d716b553955715774755232694a34623670534150485133724a3363757030304244397633414d4e6f442f646c736e69413541566556675639775330426d495847694931553569334b306744363068314d63745a4332374b4c6b565037577976786837312f4b5078647162316571704b5a535a4e3332692b79477835367965453d";
+								     >
+								     
+								     <input name="radio"  type="radio" /><b style="font-size:1.5em">660.0</b><br/>
+									&nbsp;<span>A舱</span>&nbsp;<span> 1个</span>
+								</div>
+						    </td>
+						
+				    	
+				    	
+				    	
+					
+				</tr>
+				<tr>    
+				</tr>
+			</table>
+			<div class="buttonlet align-right" style="margin-top:5px;"><a class="showallcabin"  coordinate="OW;aced000573720026636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466c696768745a06d6db98e934230200125a0012627573466c69676874417661696c61626c655a000569734173725a000b69735368617265436f64655a00056c7559616e49000c73746f705175616e74697479440005746178434e44000574617859514c00076169726c696e657400124c6a6176612f6c616e672f537472696e673b4c000e6172726976616c416972706f727471007e00014c000f6172726976616c4461746554696d657400104c6a6176612f7574696c2f446174653b4c00076361727269657271007e00014c0007636c61737365737400104c6a6176612f7574696c2f4c6973743b4c0008636c617a7a4d617074000f4c6a6176612f7574696c2f4d61703b4c0010646570617274757265416972706f727471007e00014c00116465706172747572654461746554696d6571007e00024c000965717569706d656e7471007e00014c000c666c696768744e756d62657271007e00014c00046d65616c71007e000178700000000000000000404900000000000040440000000000007400025343740003594e547372000e6a6176612e7574696c2e44617465686a81014b597419030000787077080000014aa1058060787400025343737200136a6176612e7574696c2e41727261794c6973747881d21d99c7619d03000149000473697a6578700000000377040000000a73720025636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e436c617a7a0900af15f5b0eba5020009430009636c617373436f64654c000b61677265656d656e74496471007e00014c000962617365436162696e71007e00014c0004666172657400264c636f6d2f74726176656c736b792f736365742f6169722f69616f2f6265616e2f466172653b4c000970726f64756374496471007e00014c000b70726f647563744e616d6571007e00014c000f70726f6475637453686f774e616d6571007e00014c00087175616e7469747971007e00014c000472756c6574002f4c636f6d2f74726176656c736b792f736365742f6169722f6d616e616765722f6265616e2f436162696e52756c653b787000467400064e6f726d616c7400014673720024636f6d2e74726176656c736b792e736365742e6169722e69616f2e6265616e2e466172650900af15f5b0eba602000b44000b6164756c74416d6f756e7444000e62617365436162696e507269636544000b6368696c64416d6f756e7444000c696e66616e74416d6f756e74440005707269636544000d73747564656e74416d6f756e744c00076473744369747971007e00014c000d666172656261736973436f646571007e00014c000b6a6f75726e65795479706571007e00014c00076f72674369747971007e00014c0008746f7572436f646571007e0001787040a16c000000000040a2e800000000000000000000000000000000000000000040a2e80000000000000000000000000071007e000771007e00127400024f5774000350454b707400012d74000ce5a4b4e7ad89e5b08ae4baab71007e0018740001377372002d636f6d2e74726176656c736b792e736365742e6169722e6d616e616765722e6265616e2e436162696e52756c650900af15f5b0eba702000c5a001a6261636b466c696768744368616e67655065726d697474696f6e49000e63616e4368616e676554696d657349000e63616e55706461746554696d65734400096368616e676546656544000c6368616e676546656554776f5a0018676f466c696768744368616e67655065726d697474696f6e440009726566756e6446656544000c726566756e6446656554776f49000a726566756e6461626c654400097570646174654665654c0002656971007e00014c000672656d61726b71007e000178700100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a87371007e000d004171007e001171007e00127371007e00134084a0000000000040a2e80000000000000000000000000000000000000000004085900000000000000000000000000071007e000774000b412f50454b31344130343371007e001571007e00167071007e001774000fe8b685e580bce5a4b4e7ad89e888b171007e0021740001317371007e001a0100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a87371007e000d005971007e0011740001597371007e00134083b000000000004085900000000000000000000000000000000000000000004085900000000000000000000000000071007e000771007e002771007e001571007e00167071007e001774000ce79585e8a18ce59586e6978571007e0029740001417371007e001a0100000000ffffffff00000000000000004014000000000000014014000000000000402400000000000000000001000000000000000074000fe99990e7bd91e4b88ae98080e7a5a87400cae8b5b7e9a39ee5898de5908ce888b1e5908ce4bbb7e5858de8b4b9e694b9e69c9f2ce8b5b7e9a39ee5908ee5908ce888b1e5908ce4bbb7e6af8fe6aca1e69bb4e694b9e694b9e69c9fe8b4b935253b20e8b5b7e9a39ee5898de98080e7a5a8e8b4b935252ce8b5b7e9a39ee5908ee98080e7a5a8e8b4b93130253b20e5a682e69bb4e694b9e5ad98e59ca8e7a5a8e99da2e5b7ae2ce99c80e6af94e8be83e7a5a8e99da2e5b7aee4b88ee694b9e69c9fe8b4b9e58f96e9ab983b20e99990e7bd91e4b88ae98080e7a5a878737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f4000000000000c7708000000100000000371007e002a71007e002271007e001271007e001971007e002771007e002a7871007e00167371007e000877080000014aa0b7ae80787400033733387400043438353674000153;1" action="/scet/airAvailDetails.do" ><span class="tri-br"></span><span class="button">显示所有价格</span></a></div>
+		</td></tr>
+	</table>
+	</div>
+	
+	<div id="noFlightGo" style="display: none;" class="align-center color1">没有查询到航班</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 回程 -->
+
+<div class="clear"></div>
+</div><br/>
+
+
+<div id="detail" class="border overflow-hidden" style="display: none;"> 
+	<div class="header">您选择的航班</div>
+	<div class="content" style="padding: .5em;">
+	    <table border="0" cellpadding="0" cellspacing="0" id="detailTable">
+		<tr>
+			<th width="100">
+				
+					航班
+				
+				
+			</th>
+			<td id="detail_go"> </td>
+		</tr>
+		
+		<tr>
+			<th width="100">机票费用</th>
+			<td name="price" ><b class="color3">￥</b><b id="detail_price" class="color3"></b></td>
+		</tr><tr>
+			<th width="100">机建/燃油</th>
+			<td name="tax" ><b class="color3">￥</b><b id="detail_tax" class="color3"></b></td>
+		</tr><tr>
+			<th width="100">登机航站楼</th>
+			<td>
+				<span id="detail_go_t"> </span>
+				
+			</td>
+		</tr><tr>
+			<th width="100" valign="top">退改签信息</th>
+			<td>
+				<span id="detail_go_remark"> </span>
+				
+			</td>
+		</tr><tr>
+			<th width="100">其他信息</th>
+			<td>
+			  	<span id="detail_go_meal"> </span>
+			  	
+			</td>
+		</tr><tr>
+			<th width="100">单人费用总计</th>
+			<td><big><b class="color3">￥</b><b id="detail_total" class="color3"></b></big></td>
+		</tr>
+		<input type="hidden" id="detailTax" />
+		<input type="hidden" id="detailReturnTax" />
+		<input type="hidden" id="detailPrice" />
+		<input type="hidden" id="detailReturnPrice" />
+		<input type="hidden" id="detailTotal" />
+		<input type="hidden" id="detailReturnTotal" />
+		</table><br/>
+		<div class="align-center">
+		  <a href="http://www.shandongair.com.cn/c/journal_articles/view_article_content?groupId=33707&articleId=128005&version=1.0"  target="_blank"><strong style="color:#000000">温馨提示：</strong>&nbsp&nbsp&nbsp&nbsp<span style="color:#FF0000">关于防范欺诈短信的公告</span></a>
+		  <input type="button" id="detail_go_next" value="下一步" class="btn middle" />
+		</div><br/>
+	</div>
+</div>
+
+<br/>
+ 
+<form id="addOrder" name="addOrder" action="/scet/pages/orderinfo/addOrder.jsp">
+</form>
+
+<form id="goAirChoose" name="goAirChoose" action="/scet/airChoose.do" method="post">
+	<input name="countrytype" id="countrytype" type="hidden" value="0" />
+	<input name="journeytype" id="journeytype" type="hidden" value="0" />
+	<input name="fromQQ" id="fromQQ" type="hidden" value="" />
+	<input name="fromAlipay" id="fromAlipay" type="hidden" value="" />
+	<input name="fromChinapay" id="fromChinapay" type="hidden" value="" />
+	<input name="hasBankFav" id="hasBankFav" type="hidden" value="" />
+	<input name="interLineIndex" id="interLineIndex" type="hidden" value=""/>
+	<input name="adultNum"  type="hidden"  />
+	<input name="childNum"  type="hidden"  />
+	<input name="isRound" id="isRound" type="hidden" value="0" />
+  	<input type="hidden" name="hotelFlag" id="hotelFlag_form" data-ishotelenable="true" />
+  	<input name="roundTripIndex" id="roundTripIndex_form"   type="hidden"  />
+  	
+  	<input name="departFlightNo" id="departFlightNo_form" type="hidden"  />
+  	<input name="departCabinCode" id="departCabinCode_form"  type="hidden"  />
+  	<input name="departGoDate" id="departGoDate_form"  type="hidden"  />
+  	<input name="departBackDate" id="departBackDate_form"  type="hidden"  />
+  	<input name="departBackDateThirty" id="departBackDateThirty_form"  type="hidden"  />
+  	<input name="firstFlightStr" id="departHexstr_form"  type="hidden"  />
+  	<input name="firstSignature" id="departSigna_form"  type="hidden"  />
+  	
+  	<input name="returnFlightNo" id="returnFlightNo_form" type="hidden"  />
+  	<input name="returnCabinCode" id="returnCabinCode_form"  type="hidden"  />
+  	<input name="returnGoDate" id="returnGoDate_form"  type="hidden"  />
+  	<input name="returnBackDate" id="returnBackDate_form"  type="hidden"  />
+  	<input name="secondFlightStr" id="returnHexstr_form"  type="hidden"  />
+  	<input name="secondSignature" id="returnSigna_form"  type="hidden"  />
+</form>
+<form id="changedateForm"  name="frmSearching-d" action="/scet/queryAv.do" method="post">
+	<input type="hidden"   name="nextday" value=""/>
+	<input type="hidden" name="comeFrom" value=""/>
+	<input type="hidden"   name="step" value="0"/>
+	<input type="hidden" name="usefor"	value="2"/>
+	<input type="hidden"   name="countrytype" value="0" />
+	<input type="hidden"   name="travelType" value="0" />
+	<input type="hidden" name="cityCodeOrg" value="PEK" />
+	<input type="hidden" name="cityNameOrg" value="北京" />
+	<input type="hidden" name="cityCodeDes" value="YNT" />
+	<input type="hidden" name="cityNameDes" value="烟台" />
+	<input type="hidden" name="takeoffDate" />
+	<input type="hidden" name="returnDate" />
+	<input type="hidden"   name="needRT" value="0"/>
+	<input name="adultNum"  type="hidden"  />
+	<input name="childNum"  type="hidden"  />
+	<input name="cabinStage"  type="hidden"  />
+	<input type="hidden" name="hotelFlag" id="hotelFlag_changedateForm"  />
+</form>
+
+<div id="plane" class="absolute display-none"></div>
+		
+		
+		
+			
+		<div class="border-top border-left border-right" style="float: left;width:721px;">
+			<div class="header">未来45日票价行情</div>
+		</div>
+		
+		<div>	
+			<div class="content">
+			<div id="chartdiv" align="center"> FusionCharts. </div>
+			<script type="text/javascript">
+			var chartscodeOrg = "PEK";
+			var chartscodeDes = "YNT";
+			var chart = new FusionCharts("/scet/FusionCharts/Charts/MSLine.swf", "ChartId", "723", "320");
+			chart.setDataURL("/scet/b2c/lowprice/trendsXML.jsp?arr="+chartscodeOrg+","+chartscodeDes+","+travelType+"," + Math.random());		   
+			chart.render("chartdiv");
+			</script>
+			</div>
+			<div class="align-center">* 票价行情曲线仅供参考，以即时查询结果为准！</div>
+		</div>
+		
+		<br/>
+	</div>
+	
+	<br />
+<script type="text/javascript">
+
+function changedate(date,type){
+
+	var takeoffDate = "" ;
+	var returnDate = "";
+	var $changedateForm = $("#changedateForm");
+	//去程换天查询
+	if(type=="1"){
+	   takeoffDate = date;
+	   returnDate = "2014-11-15";
+	}else if(type=="2"){
+	   takeoffDate = "2014-12-31";
+	   returnDate = date;
+	}else if(type=="3"){
+	   //往返特价查询
+	   takeoffDate = "2014-12-31";
+	   returnDate = date;
+	   $changedateForm.find(":input[name='travelType']").val("1");
+	}
+	
+	//往返的时候验证
+	if(travelType == 1){
+		var takeoffDateStr = takeoffDate.replace(/\-/g, "")*1;
+		var returnDateStr = returnDate.replace(/\-/g, "")*1;
+		if(takeoffDateStr>returnDateStr){
+	    	return;
+		}
+	}
+	
+	$changedateForm.find(":input[name='takeoffDate']").val(takeoffDate);
+    $changedateForm.find(":input[name='returnDate']").val(returnDate);
+    $changedateForm.submit();
+}
+
+//特殊产品点击购票
+function specialProductsGoAir(type,firstHexStr,firstSigna,secondHexStr,secondSigna){
+
+    
+	var $goAirChoose = $("#goAirChoose");
+	
+	var $departHexstr = $("#departHexstr_form");
+	var $departSigna = $("#departSigna_form");
+	var $returnHexstr = $("#returnHexstr_form");
+	var $returnSigna = $("#returnSigna_form");
+	
+	$goAirChoose.find(":input[name='adultNum']").val($("#frm_searching_d").find(":input[name='adultNum']").val());
+	$goAirChoose.find(":input[name='childNum']").val($("#frm_searching_d").find(":input[name='childNum']").val());
+	
+    $departHexstr.val(firstHexStr);
+    $departSigna.val(firstSigna);
+    $returnHexstr.val(secondHexStr);
+    $returnSigna.val(secondSigna);
+	
+	$("#goAirChoose").submit();
+} 
+ 
+</script>
+
+<script type="text/javascript">var zoneidZh = "", zoneidEn = "", widthZh = "", widthEn = "";</script>
+
+
+
+
+
+<script type="text/javascript">
+    var widthZhAd = "undefined" == typeof widthZh || !widthZh ?"953":widthZh;
+    var heightZhAd = "undefined" == typeof heightZh || !heightZh ?"90":heightZh;
+    var zoneidZhAd = "undefined" == typeof zoneidZh || !zoneidZh ?"5027":zoneidZh;
+    
+    var widthEnAd = "undefined" == typeof widthEn || !widthEn ? "953":widthEn;
+    var heightEnAd = "undefined" == typeof heightEn || !heightEn ? "90":heightEn;
+    var zoneidEnAd = "undefined" == typeof zoneidEn || !zoneidEn ? "5027":zoneidEn;
+
+    var width = widthZhAd;
+    var height = heightZhAd;
+    var zoneid = zoneidZhAd;
+    
+    if("en" != 'cn'){
+	    width = widthEnAd;
+		height = heightEnAd;
+		zoneid = zoneidEnAd;
+    }
+</script>
+
+
+<div style="text-align:center">
+<script type="text/javascript">
+	var wz_width = width;
+	var wz_height = height;
+	var wz_zoneid = zoneid;
+</script>
+<script type="text/javascript" src="http://sc.superairmedia.com/wzcast001.js"></script>	
+<script type='text/javascript'>
+	if ("undefined" == typeof adObject) {	
+		document.write("<img src='/scet/resources/images/ad_" + width + "x" + height + ".jpg' border='0'/>");
+	}
+</script>
+</div>
+
+
+
+
+
+<div></div>
+
+
+<div id="foot">
+<div class="left"></div>
+<div class="center">
+<a href="http://www.shandongair.com.cn/web/shair_en/disclaimer">Disclaimer</a>
+&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="http://www.shandongair.com.cn/web/shair_en/privacy">Privacy Policies</a>
+&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="http://www.shandongair.com.cn/web/shair_en/about">About SDA</a>
+</div>
+<div class="right"></div>
+</div>
+<div id="copyright">Copyright @ Shandong Airlines Co,.Ltd.</div>
+
+<br/><br/>
+<script type="text/javascript" src="http://www.shandongair.com.cn/html/js/o_code.js"></script>
+
+</div>
+<!-- 
+<div class="display-none" id="go_top" title="飞回顶部"><a href="javascript:void(0)"></a></div>
+ -->
+</body>
+</html>
